@@ -24,10 +24,12 @@
  * - Useful for accessibility and readability
  */
 javascript:(function(){
-  var all = document.getElementsByTagName('*');
+  // Target specific text-containing elements for better performance
+  var selectors = 'p, span, div, h1, h2, h3, h4, h5, h6, li, td, th, a, button, label';
+  var elements = document.querySelectorAll(selectors);
   
-  for (var i = 0; i < all.length; i++) {
-    var element = all[i];
+  for (var i = 0; i < elements.length; i++) {
+    var element = elements[i];
     var style = window.getComputedStyle(element);
     var currentSize = parseFloat(style.fontSize);
     

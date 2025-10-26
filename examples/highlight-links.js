@@ -22,10 +22,11 @@
  */
 javascript:(function(){
   var links = document.getElementsByTagName('a');
+  var dataAttr = 'data-bookmarklet-highlighted';
   var highlighted = false;
   
-  // Check if links are already highlighted
-  if (links.length > 0 && links[0].style.backgroundColor === 'yellow') {
+  // Check if links are already highlighted by checking data attribute
+  if (links.length > 0 && links[0].hasAttribute(dataAttr)) {
     highlighted = true;
   }
   
@@ -34,9 +35,11 @@ javascript:(function(){
     if (highlighted) {
       links[i].style.backgroundColor = '';
       links[i].style.border = '';
+      links[i].removeAttribute(dataAttr);
     } else {
       links[i].style.backgroundColor = 'yellow';
       links[i].style.border = '2px solid red';
+      links[i].setAttribute(dataAttr, 'true');
     }
   }
   
